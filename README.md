@@ -1,14 +1,14 @@
 # bear_witness
 
-This crates provides examples on how to use type witness in rust to use the type-checker for fun and profit.
+This crates provides examples of type witness in rust.
 
 > [!WARNING]
 > This crate is not intended to be depended on, just to provide examples.
 
 There are 3 main categories of a type witness usage:
-1. trait check without type erasure
-2. convert a type into value
-3. lift a value into type
+1. trait check without type erasure ([bears])
+2. lift a value into type ([auth])
+3. convert a type into value
 
 ## example 1 : trait check without type erasure
 
@@ -17,7 +17,7 @@ This example is implemented in the [bears] module.
 Let's say we have some concrete types: `BrownBear`, `PolarBear`, and `Dog`.
 And a `Bear` trait implemented on `BrownBear` and `PolarBear`.
 
-```
+```rust
 struct BrownBear;
 impl BrownBear {
     fn do_brown_bear_things(&self) -> &str {
@@ -40,7 +40,7 @@ We want to be sure our animal is a `Bear`, but we don't want to erase the concre
 Wrapping in `Box<dyn Bear>` won't work, we wouldn't be able to call `BrownBear::do_brown_bear_things` on it.
 
 Instead we will construct a type witness: forcing a type check on the `Bear` trait, but returning the same type.
-```
+```rust
 # use bear_witness::bears::*;
 #
 fn witness<T: Bear>(bear: T) -> T {
@@ -51,7 +51,7 @@ let bear = witness(animal);
 ```
 
 This checks out, but we don't retain any information about having checked the type.
-```
+```rust
 # use bear_witness::bears::*;
 #
 # fn witness<T: Bear>(bear: T) -> T {
@@ -67,7 +67,7 @@ assert!(certified_only(BrownBear)); // yikes, this one was not verified
 
 We want to tag the type with something to show we have checked it.
 We can use a simple transparent wrapper [Certified] for this.
-```
+```rust
 # use bear_witness::bears::*;
 # use bear_witness::Certified;
 #

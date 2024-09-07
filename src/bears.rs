@@ -1,4 +1,4 @@
-//! # example 1 : of trait check without type erasure
+//! # example 1 : trait check without type erasure
 //!
 //! This is a simple example of constructing a type witness without erasing type information.
 //!

@@ -1,6 +1,7 @@
 #![doc = include_str!("../README.md")]
 
 pub mod bears;
+pub mod auth;
 
 /// A simple transparent wrapper.
 ///
