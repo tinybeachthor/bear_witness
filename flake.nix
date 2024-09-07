@@ -17,7 +17,11 @@
         };
 
         devShells.default = let
-          my-rust = pkgs.rust-bin.stable.latest.default;
+          my-rust = pkgs.rust-bin.stable.latest.default.override {
+            extensions = [
+              "rust-src"
+            ];
+          };
         in pkgs.mkShell {
           buildInputs = [
             pkgs.git
