@@ -1,7 +1,7 @@
 #![doc = include_str!("../README.md")]
 
-pub mod bears;
 pub mod auth;
+pub mod bears;
 
 /// A simple transparent wrapper.
 ///
@@ -21,9 +21,12 @@ impl<T> std::ops::Deref for Certified<T> {
     }
 }
 
-impl<T> Clone for Certified<T> where T: Clone {
+impl<T> Clone for Certified<T>
+where
+    T: Clone,
+{
     fn clone(&self) -> Self {
         Certified(self.0.clone())
     }
 }
-impl<T> Copy  for Certified<T> where T: Copy  {}
+impl<T> Copy for Certified<T> where T: Copy {}

@@ -45,7 +45,9 @@ pub fn handler() -> Result<String, String> {
 }
 
 /// User session, identified by `user_id`.
-pub struct Session { pub user_id: u32 }
+pub struct Session {
+    pub user_id: u32,
+}
 
 /// Type witness for the [Session::user_id] value.
 pub enum Auth<T> {
