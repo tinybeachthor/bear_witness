@@ -23,7 +23,9 @@
 //!
 //! But the type system won't let us call [bear_witness] on a [Dog].
 //! [Dog] does not implement [Bear], so it won't pass the trait check.
-//! ```ignore
+//! ```compile_fail
+//! # use bear_witness::bears::*;
+//! #
 //! let animal = Dog;
 //! let certified_bear = bear_witness(animal);
 //! // error: the trait `Bear` is not implemented for `Dog`

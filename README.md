@@ -5,6 +5,48 @@ This crates provides examples of type witness in rust.
 > [!WARNING]
 > This crate is not intended to be depended on, just to provide examples.
 
+## type witness
+
+Any program is also a proof. A simple addition calculator constructs a proof that 2 numbers can be added.
+The result of the operation is also the proof. If you try dividing by `0`, the calculator won't give you a result at all.
+
+Consider the following function:
+```rust
+fn first_character(s: String) -> char {
+    s.chars().next().unwrap()
+}
+let s = "Hello".to_string();
+assert_eq!(first_character(s), 'H');
+```
+If I call this function over some `x` and get back a [char], I will know that `x` must be a [String].
+The fact that `first_character` can be called on some value proves that the value is a [String].
+We actually don't even need to run the function, the type-checker can verifies this during compilation.
+```compile_fail
+# fn first_character(s: String) -> char {
+#     s.chars().next().unwrap()
+# }
+first_character(42);
+// error: expected `String`, found integer
+```
+```should_panic
+# fn first_character(s: String) -> char {
+#     s.chars().next().unwrap()
+# }
+// compiles because the input is indeed a [String] but panics at runtime
+// sidenote: to type check this we would need a type for a non-empty String,
+//           e.g. `(char, String)`
+first_character("".to_string());
+// panic: called `Option::unwrap()` on a `None` value
+```
+
+A type witness works similarly, we construct a type and it's existence is used to verify some property.
+The main advantage is that it's all done at compile time - so no runtime overhead at all.
+Is this ever useful? Sometimes.
+There are some examples of type witness usage: example 2 ([auth]) is a pretty common pattern.
+The most interesting one is example 3.
+
+## usage
+
 There are 3 main categories of a type witness usage:
 1. trait check without type erasure ([bears])
 2. lift a value into type ([auth])

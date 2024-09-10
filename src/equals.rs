@@ -54,7 +54,7 @@
 //!     A: From<B>,
 //!     B: From<A>,
 //! {}
-//! // This impl also cover identity A <-> A, because types imple `From<Self>`.
+//! // This impl also covers identity A <-> A, because types impl `From<Self>`.
 //! ```
 //!
 //! If we have an implentation of `EqualsWitness`, it is our type witness for the
@@ -68,15 +68,17 @@
 //!
 //! // any type is isomophic with itself
 //! <u32 as EqualsWitness::<u32, u32>>::is_iso();
+//! <&str as EqualsWitness::<&str, &str>>::is_iso();
+//! <Vec<[u8; 10]> as EqualsWitness::<Vec<[u8; 10]>, Vec<[u8; 10]>>>::is_iso();
 //! ```
 //!
 //! ```compile_fail
 //! # use bear_witness::equals::EqualsWitness;
-//! // this does not hold, should not compile
 //! <u32 as EqualsWitness::<u32, String>>::is_iso();
+//! // the trait `From<String>` is not implemented for `u32`, which is required by `u32: EqualsWitness<u32, String>`
 //! ```
 
-/// Type equality witness type
+/// Type equality witness trait
 pub trait EqualsWitness<A, B> {
     fn is_iso() {}
 }
