@@ -2,6 +2,7 @@
 
 pub mod auth;
 pub mod bears;
+pub mod equals;
 
 /// A simple transparent wrapper.
 ///

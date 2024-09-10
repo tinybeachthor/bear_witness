@@ -9,6 +9,7 @@ There are 3 main categories of a type witness usage:
 1. trait check without type erasure ([bears])
 2. lift a value into type ([auth])
 3. convert a type into value
+4. bonus: type isomorphism ([equals])
 
 ## example 1 : trait check without type erasure
 
