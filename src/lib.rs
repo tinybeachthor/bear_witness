@@ -1,3 +1,4 @@
+#![warn(missing_docs)]
 #![doc = include_str!("../README.md")]
 
 pub mod auth;
@@ -11,6 +12,7 @@ pub mod i18n;
 /// Return it from a `witness` function, proving we have type-checked the value.
 pub struct Certified<T>(T);
 impl<T> Certified<T> {
+    /// Create a new [Certified] value.
     pub fn new(t: T) -> Self {
         Self(t)
     }

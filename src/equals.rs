@@ -80,6 +80,7 @@
 
 /// Type equality witness trait
 pub trait EqualsWitness<A, B> {
+    /// Are the types isomorphic?
     fn is_iso() {}
 }
 impl<A, B> EqualsWitness<A, B> for A

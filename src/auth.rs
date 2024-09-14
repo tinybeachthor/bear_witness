@@ -46,6 +46,7 @@ pub fn handler() -> Result<String, String> {
 
 /// User session, identified by `user_id`.
 pub struct Session {
+    /// User Id for the current session.
     pub user_id: u32,
 }
 

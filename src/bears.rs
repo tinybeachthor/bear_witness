@@ -47,6 +47,7 @@ pub fn bear_witness<T: Bear>(bear: T) -> Certified<T> {
 
 /// [Bear] trait, implemented on [BrownBear] and [PolarBear], but not on [Dog].
 pub trait Bear {
+    /// Growling is something all [Bear]s do.
     fn growl(&self) -> &str;
 }
 

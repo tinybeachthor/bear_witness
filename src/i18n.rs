@@ -120,42 +120,51 @@
 //! // error: the trait `Localize<German>` is not implemented for `Context`
 //! ```
 
-// Context
-
+/// The context for rendering localized message.
 pub struct Context {
+    /// Who do we want to greet?
     pub who: String,
 }
 
-// Language
-
+/// Language enum.
 pub enum Language {
+    /// English
     English,
+    /// French
     French,
+    /// German
     German,
 }
 
-// Typed Language
-
+/// Typed language trait, so we can pass a typed language to functions.
 pub trait TypedLang {}
 
+/// Typed English
 pub struct English;
 impl TypedLang for English {}
+/// Typed French
 pub struct French;
 impl TypedLang for French {}
+/// Typed German
 pub struct German;
 impl TypedLang for German {}
 
-// Localized & Localize
-
+/// Localized value into a language.
 pub enum Localized<T: Sized> {
+    /// English
     English(T),
+    /// French
     French(T),
+    /// German
     German(T),
 }
 
+/// Localize -> [Localized]
 pub trait Localize<L: TypedLang> {
+    /// Turn a value into [Localized] for a given language.
     fn localize(self, lang: L) -> Localized<Self>
-        where Self: Sized;
+    where
+        Self: Sized;
 }
 
 // impl Localize for Context
