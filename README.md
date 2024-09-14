@@ -1,5 +1,8 @@
 # bear_witness
 
+[![Crates.io Version](https://img.shields.io/crates/v/bear_witness)](https://crates.io/crates/bear_witness)
+[![docs.rs](https://img.shields.io/docsrs/bear_witness)](https://docs.rs/bear_witness/0.1.0/bear_witness/)
+
 This crate provides examples of type witness in rust.
 
 If you are familiar with the concept and just want to see a cool thing: [i18n]
