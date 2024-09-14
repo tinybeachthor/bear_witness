@@ -3,6 +3,7 @@
 pub mod auth;
 pub mod bears;
 pub mod equals;
+pub mod i18n;
 
 /// A simple transparent wrapper.
 ///

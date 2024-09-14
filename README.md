@@ -1,9 +1,19 @@
 # bear_witness
 
-This crates provides examples of type witness in rust.
+This crate provides examples of type witness in rust.
+
+If you are familiar with the concept and just want to see a cool thing: [i18n]
 
 > [!WARNING]
 > This crate is not intended to be depended on, just to provide examples.
+
+---
+
+There are 3 main categories of a type witness usage:
+1. trait check without type erasure ([bears])
+2. lift a value into type ([auth])
+3. convert a type into value ([i18n])
+4. bonus: type isomorphism ([equals])
 
 ## type witness
 
@@ -44,14 +54,6 @@ The main advantage is that it's all done at compile time - so no runtime overhea
 Is this ever useful? Sometimes.
 There are some examples of type witness usage: example 2 ([auth]) is a pretty common pattern.
 The most interesting one is example 3.
-
-## usage
-
-There are 3 main categories of a type witness usage:
-1. trait check without type erasure ([bears])
-2. lift a value into type ([auth])
-3. convert a type into value
-4. bonus: type isomorphism ([equals])
 
 ## example 1 : trait check without type erasure
 
