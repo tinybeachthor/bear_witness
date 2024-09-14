@@ -2,5 +2,12 @@
 name = "bear_witness"
 version = "0.1.0"
 edition = "2021"
+description = "Examples of type witness in Rust"
+keywords = ["type-witness", "witness", "types", "typed", "example"]
+
+readme = "README.md"
+license = "BSD-3-Clause"
+homepage = "https://github.com/tinybeachthor/bear_witness"
+repository = "https://github.com/tinybeachthor/bear_witness"
 
 [dependencies]

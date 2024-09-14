@@ -31,14 +31,14 @@ assert_eq!(first_character(s), 'H');
 If I call this function over some `x` and get back a [char], I will know that `x` must be a [String].
 The fact that `first_character` can be called on some value proves that the value is a [String].
 We actually don't even need to run the function, the type-checker can verifies this during compilation.
-```compile_fail
+```rust,compile_fail
 # fn first_character(s: String) -> char {
 #     s.chars().next().unwrap()
 # }
 first_character(42);
 // error: expected `String`, found integer
 ```
-```should_panic
+```rust,should_panic
 # fn first_character(s: String) -> char {
 #     s.chars().next().unwrap()
 # }
